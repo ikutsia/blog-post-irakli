@@ -335,12 +335,10 @@ textarea {
   font-size: 100px;
 }
 
-.contact {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .C-h1 {
   font-size: 30px;
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: -10rem;
 }

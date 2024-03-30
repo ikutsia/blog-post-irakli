@@ -51,7 +51,7 @@ function App() {
           element={<UpdateResume isAuth={isAuth} />}
         />
         <Route path="/Login" element={<Login setIsAuth={setIsAuth} />} />
-        <Route path="/Contact" element={<Contact isAuth={isAuth} />}></Route>
+        <Route path="/Contact" element={<Contact isAuth={isAuth} />} />
         <Route path="/Footer" element={<Footer isAuth={isAuth} />} />
       </Routes>
     </Router>
