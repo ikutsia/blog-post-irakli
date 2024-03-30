@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"  # Specify the build command for your project
+  publish = "build/"         # Specify the directory to publish (e.g., the build output)
+
+[context.production.environment]
+  # Define environment variables for production environment
+  NODE_ENV = "production"
+  API_URL = "https://api.example.com"
+
+[context.branch-deploy.environment]
+  # Define environment variables for branch deploys
+  NODE_ENV = "development"
+  API_URL = "https://dev-api.example.com"
