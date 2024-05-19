@@ -10,10 +10,9 @@ root.render(
   </React.StrictMode>
 );
 
-require("dotenv").config();
+// Access the API key using process.env
+const apiKey = process.env.REACT_APP_API_KEY;
+console.log("API Key:", apiKey); // for demonstration, remove in production
 
-const api_key = process.env.API_KEY;
-  // If you want to start measuring performance in your app, pass a function
-  // to log results (for example: reportWebVitals(console.log))
-  // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-  .reportWebVitals();
+// Measure performance in your app
+reportWebVitals(console.log);
