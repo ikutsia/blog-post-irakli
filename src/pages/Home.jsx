@@ -74,7 +74,7 @@ function Home({ isAuth }) {
       <div className="pageTitle-Photo">
         <section className="section">
           <h1 className="section-h1">Irakli Kutsia Portfolio Website</h1>
-          <img src={Irakli} alt="balcony view" description="balcony view"></img>
+          <img src={Irakli} alt="Irakli" description="Irakli"></img>
         </section>
       </div>
 
