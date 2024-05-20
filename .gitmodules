@@ -1,0 +1,3 @@
+[submodule "blog-post-irakli"]
+    path = blog-post-irakli
+    url = https://github.com/ikutsia/blog-post-irakli-submodule-url
