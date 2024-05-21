@@ -2,8 +2,14 @@
   command = "npm run build"  # Specify the build command for your project
   publish = "build/"         # Specify the directory to publish (e.g., the build output)
 
+[build.environment]
+  # General environment variables for all builds
+  NODE_ENV = "production"
+  API_URL = "https://api.example.com"
+  GIT_SUBMODULE_STRATEGY = "recursive"
+
 [context.production.environment]
-  # Define environment variables for production environment
+  # Define production-specific environment variables (if needed)
   NODE_ENV = "production"
   API_URL = "https://api.example.com"
 
