@@ -5,7 +5,7 @@ module.exports = function (api) {
 
   const plugins = [
     "@babel/plugin-proposal-private-property-in-object",
-    // Add any other Babel plugins you need here
+    "@babel/plugin-proposal-private-methods",
   ];
 
   return {
