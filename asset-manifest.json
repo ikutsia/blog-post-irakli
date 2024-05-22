@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/ikutsia/blog-post-irakli/static/css/main.089f5d6b.css",
+    "main.js": "/ikutsia/blog-post-irakli/static/js/main.d7e25c28.js",
+    "static/js/453.b1912916.chunk.js": "/ikutsia/blog-post-irakli/static/js/453.b1912916.chunk.js",
+    "static/media/Irakli.png": "/ikutsia/blog-post-irakli/static/media/Irakli.fab5884cd79e78a3053f.png",
+    "static/media/slick.svg": "/ikutsia/blog-post-irakli/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/ikutsia/blog-post-irakli/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/ikutsia/blog-post-irakli/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/ikutsia/blog-post-irakli/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/ikutsia/blog-post-irakli/index.html",
+    "main.089f5d6b.css.map": "/ikutsia/blog-post-irakli/static/css/main.089f5d6b.css.map",
+    "main.d7e25c28.js.map": "/ikutsia/blog-post-irakli/static/js/main.d7e25c28.js.map",
+    "453.b1912916.chunk.js.map": "/ikutsia/blog-post-irakli/static/js/453.b1912916.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.089f5d6b.css",
+    "static/js/main.d7e25c28.js"
+  ]
+}
