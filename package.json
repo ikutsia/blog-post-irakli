@@ -1,4 +1,5 @@
 {
+  "homepage": "https://github.com/ikutsia/blog-post-irakli",
   "name": "blog-post-natia",
   "version": "0.1.0",
   "private": true,
@@ -22,7 +23,9 @@
     "start": "set NODE_ENV=development && react-scripts start",
     "build": "set NODE_ENV=production && react-scripts build",
     "test": "set NODE_ENV=test && react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -45,6 +48,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1",
     "webpack": "^5.90.3",
     "webpack-cli": "^5.1.4"
   }
