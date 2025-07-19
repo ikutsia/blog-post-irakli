@@ -1,5 +1,5 @@
 [build]
-  command = "NODE_ENV=production npm run build"  # Specify the build command for your project
+  command = "npm run build"  # Specify the build command for your project
   publish = "build/"         # Specify the directory to publish (e.g., the build output)
 
 [build.environment]
