@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./App.css";
-import "./pages/Home.css";
+import "./styles/App.css";
+import "./styles/Home.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
-import Irakli from "./Images/Irakli.png";
-import CreatePost from "./pages/CreatePost";
-import UpdateResume from "./pages/UpdateResume";
-import Login from "./pages/Login";
+import CreatePost from "./pages/CreatePost.jsx";
+import UpdateResume from "./pages/UpdateResume.jsx";
+import Login from "./pages/Login.jsx";
 import Contact from "./pages/Contact";
 import Footer from "./pages/Footer";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
-import Slider from "react-slick";
 
 function App() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
@@ -38,7 +36,9 @@ function App() {
             <Link to="/updateresume"> Update Resume </Link>
 
             <Link to="/createpost"> Create Post </Link>
-            <button onClick={signUserOut}>Log out</button>
+            <button className="logout-btn" onClick={signUserOut}>
+              Log out
+            </button>
             <Link to="/Contact">Contact</Link>
           </>
         )}
@@ -51,7 +51,7 @@ function App() {
           element={<UpdateResume isAuth={isAuth} />}
         />
         <Route path="/Login" element={<Login setIsAuth={setIsAuth} />} />
-        <Route path="/Contact" element={<Contact isAuth={isAuth} />}></Route>
+        <Route path="/Contact" element={<Contact isAuth={isAuth} />} />
         <Route path="/Footer" element={<Footer isAuth={isAuth} />} />
       </Routes>
     </Router>

@@ -10,7 +10,9 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// Access the API key using process.env
+const apiKey = process.env.REACT_APP_API_KEY;
+console.log("API Key:", apiKey); // for demonstration, remove in production
+
+// Measure performance in your app
+reportWebVitals(console.log);

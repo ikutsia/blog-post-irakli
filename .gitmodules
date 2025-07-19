@@ -1,0 +1,3 @@
+[submodule "blog-post-natia"]
+    path = blog-post-natia
+    url = https://github.com/ikutsia/blog-post-irakli.git

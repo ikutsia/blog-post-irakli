@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useNavigate } from "react-router-dom";
+
 import Irakli from "../Images/Irakli.png";
-import "./Home.css";
+import "../styles/Home.css";
 import Contact from "./Contact";
 import Footer from "./Footer";
 
@@ -21,23 +18,13 @@ function Home({ isAuth }) {
     };
 
     getPosts();
-  }, []);
+  }, [postsCollectionRef]);
 
   const deletePost = async (id) => {
     const postDoc = doc(db, "posts", id);
     await deleteDoc(postDoc);
     const updatedPosts = postLists.filter((post) => post.id !== id);
     setPostList(updatedPosts);
-  };
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
   };
 
   const toggleFullPost = (postId) => {
@@ -60,7 +47,7 @@ function Home({ isAuth }) {
     };
 
     getResume();
-  }, []);
+  }, [resumeCollectionRef]);
 
   const deleteResume = async (id) => {
     const resumeDoc = doc(db, "resume", id);
@@ -72,9 +59,40 @@ function Home({ isAuth }) {
   return (
     <>
       <div className="pageTitle-Photo">
-        <section className="section">
-          <h1 className="section-h1">Irakli Kutsia Portfolio Website</h1>
-          <img src={Irakli} alt="balcony view" description="balcony view"></img>
+        <section
+          className="section"
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <h1
+            className="section-h1"
+            style={{
+              margin: 0,
+              flex: 1,
+              textAlign: "left",
+              fontSize: "1000%",
+              fontFamily: "Quicksand, sans-serif",
+              fontWeight: "bold",
+              paddingLeft: "140px",
+            }}
+          >
+            Irakli Kutsia
+          </h1>
+          <img
+            src={Irakli}
+            alt="Irakli"
+            description="Irakli"
+            style={{
+              margin: "10px 10px 10px 0",
+              maxHeight: "1200px",
+              maxWidth: "1200px",
+              borderRadius: "10px",
+            }}
+          />
         </section>
       </div>
 
@@ -115,14 +133,14 @@ function Home({ isAuth }) {
         ))}
       </div>
 
-      <div>
+      <div className="resume-box">
         <section>
-          <h2 className="resume-h2">My Professional Resume:</h2>
+          <h2 className="resume-h2">My Professional Resume</h2>
         </section>
       </div>
 
       <div className="homePage-2">
-        <div className="flex-box">
+        <div className="resume-section-box">
           <h2>Motivation</h2>
           {resumeLists.map((resume) => (
             <div key={resume.id}>
@@ -134,7 +152,7 @@ function Home({ isAuth }) {
           ))}
         </div>
 
-        <div className="flex-box">
+        <div className="resume-section-box">
           <h2>Education</h2>
           {resumeLists.map((resume) => (
             <div key={resume.id}>
@@ -146,7 +164,7 @@ function Home({ isAuth }) {
           ))}
         </div>
 
-        <div className="flex-box">
+        <div className="resume-section-box">
           <h2>Work Experience</h2>
           {resumeLists.map((resume) => (
             <div key={resume.id}>
@@ -158,7 +176,7 @@ function Home({ isAuth }) {
           ))}
         </div>
 
-        <div className="flex-box">
+        <div className="resume-section-box">
           <h2>Trainings</h2>
           {resumeLists.map((resume) => (
             <div key={resume.id}>
@@ -172,7 +190,6 @@ function Home({ isAuth }) {
       </div>
 
       <div className="contact">
-        <h1 className="C-h1">Contact Me!</h1>
         {Contact}
         <Contact />
       </div>

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
 }
@@ -27,9 +31,18 @@ a {
   font-size: 25px;
 }
 
+a:hover {
+  color: #fca311;
+  text-decoration: none;
+  font-size: 26px;
+  transition: color 0.2s, font-size 0.2s;
+}
+
 .pageTitle-Photo {
   display: flex;
   justify-content: center;
+  width: 100vw;
+  background-color: #d1d1d1;
 }
 
 .createPostPage {
@@ -161,10 +174,7 @@ textarea {
   font-weight: 500;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  background-image: (
-    data: image/svg + xml;base64,
-    PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMT
-  );
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAxOCAxOCI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48cGF0aCBkPSJNMTcuNiA5LjJsLS4xLTEuOEg5djMuNGg0LjhDMTMuNiAxMC42IDEzIDExLjQgMTIgMTIuNmhoMi44YTMgMyAwIDAgMCAyLjYtMi4zaC0xLjRhMyAzIDAgMCAxLTMgM0g4LjRhMyAzIDAgMCAxLTMtM3YtMi40SDMuMWMtLjQtLjgtLjQtMS42IDAtMi40bC4xLTEuOGgxLjRhMyAzIDAgMCAwIDMtM2gxLjRhMyAzIDAgMCAwIDMtM2guMXoiIGZpbGw9IiM0Mjg1ZjQiIGZpbGwtcnVsZT0ibm9uemVybyIvPjxwYXRoIGQ9Ik05LjQgMTYuMmMwIC40IC4zIC44IC44IC44aDcuMmMuNCAwIC44LS40IC44LS44IDAtLjQtLjQtLjgtLjgtLjhoLTEwLjJjLS41IDAtLjguNC0uOC44eiIgZmlsbD0iIzQyODVmNCIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9nPjwvc3ZnPg==);
   background-color: white;
   background-repeat: no-repeat;
   background-position: 12px 11px;
@@ -193,64 +203,60 @@ textarea {
 
 .homePage {
   width: 100%;
-  min-height: calc(100vh - 80px);
-  height: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-items: center;
-  padding-top: 20px;
-  gap: 0.02px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 32px 16px 32px 16px;
+  flex-wrap: nowrap;
+}
+
+.homePage .post {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 340px;
+  height: 320px;
+  background-color: rgb(250, 250, 250);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin: 0;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: min-width 0.2s, max-width 0.2s, flex-basis 0.2s;
 }
 
 .resume-h2 {
-  display: flex;
-  justify-content: center;
-  border-top: solid;
-  padding-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .homePage-2 {
-  /*width: 100%;
-  min-height: calc(100vh - 80px);*/
-  height: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 20px;
-  gap: 0.02px;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  gap: 0;
 }
 
 .flex-box {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  border: 1px solid #ccc; /* Add border for box visualization */
-  margin-bottom: 10px; /* Add some margin between boxes */
-  padding: 10px; /* Add padding inside the box */
+  align-items: center;
 }
 
 .flex-box > h2 {
-  margin-bottom: 10px; /* Add some margin below the title */
+  margin-bottom: 20px;
 }
 
-.homePage .post {
-  width: 300px;
-  height: 300px;
-  background-color: rgb(250, 250, 250);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 15px;
-}
-
-.homePage-2 .resume {
-  width: 900px;
-  height: 150px;
-  background-color: rgb(200, 200, 250);
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 15px;
+.homePage .post:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.03);
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .post .postHeader {
@@ -266,39 +272,35 @@ textarea {
 }
 
 .postHeader .title {
-  flex: 50%;
+  flex: 1;
 }
 
 .resumeHeader .resumeTitle {
-  flex: 50%;
+  flex: 1;
 }
 
 .postHeader .deletePost {
-  flex: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex: 0;
 }
 
 .resumeHeader .deleteResume {
-  flex: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex: 0;
 }
 
 .deletePost button {
-  border: none;
   background: none;
-  font-size: 30px;
+  border: none;
+  font-size: 20px;
   cursor: pointer;
+  color: red;
 }
 
 .deleteResume button {
-  border: none;
   background: none;
-  font-size: 30px;
+  border: none;
+  font-size: 20px;
   cursor: pointer;
+  color: red;
 }
 
 .post .postTextContainer {
@@ -307,7 +309,31 @@ textarea {
   max-height: 400px;
   width: 100%;
   overflow: hidden;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
+}
+
+.post .title h1 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #22223b;
+  margin-bottom: 10px;
+  font-family: "Quicksand", sans-serif;
+}
+
+.post .postTextContainer {
+  font-size: 1.1rem;
+  color: #4a4e69;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+.post h3 {
+  font-size: 0.95rem;
+  color: #9a8c98;
+  font-style: italic;
+  margin-top: 8px;
+  font-family: "Quicksand", sans-serif;
 }
 
 .resume .resumeTextContainer {
@@ -316,29 +342,90 @@ textarea {
   max-height: 400px;
   width: 100%;
   overflow: hidden;
-  /*overflow-y: auto;*/
+  overflow-y: auto;
 }
 
 .section {
   display: flex;
-  flex-direction: row;
-  justify-content: right;
-  gap: 100px;
-  border: solid;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 15px;
-  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
 }
 
 .section-h1 {
-  font-size: 100px;
+  margin-bottom: 20px;
 }
 
 .C-h1 {
-  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.resume-box {
+  max-width: 800px;
+  width: 800px;
+  margin: 40px auto 24px auto;
+  padding: 24px 20px;
+  background: #6d6e75;
+  color: #fff;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-  margin-bottom: -10rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.resume-box .resume-h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.resume-section-box {
+  width: 700px;
+  margin: 24px auto;
+  padding: 24px 20px;
+  background: #fff;
+  color: #22223b;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 3px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.resume-section-box h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #4a4e69;
+  text-align: center;
+}
+
+.contact {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.logout-btn {
+  font-size: 25px;
+  padding: 8px 18px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  transition: color 0.2s, font-size 0.2s;
+}
+
+.logout-btn:hover {
+  color: #fca311;
+  font-size: 26px;
 }
