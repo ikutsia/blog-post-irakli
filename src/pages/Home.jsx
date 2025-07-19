@@ -213,7 +213,6 @@ function Home({ isAuth }) {
       </div>
 
       <div className="contact">
-        {Contact}
         <Contact />
       </div>
 
