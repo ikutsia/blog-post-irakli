@@ -1,3 +1,3 @@
-[submodule "blog-post-natia"]
-    path = blog-post-natia
+[submodule "blog-post-irakli"]
+    path = blog-post-irakli
     url = https://github.com/ikutsia/blog-post-irakli.git
