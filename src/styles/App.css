@@ -29,6 +29,9 @@ a {
   text-decoration: none;
   margin: 10px;
   font-size: 25px;
+  border: none;
+  background: none;
+  box-shadow: none;
 }
 
 a:hover {
@@ -47,60 +50,43 @@ a:hover {
 
 .createPostPage {
   width: 100%;
-  height: calc (100vh - 80px);
+  height: calc(100vh - 80px);
   display: grid;
   place-items: center;
+  margin-top: 8px;
 }
 
 .updateResumePage {
-  width: 100%;
-  height: calc (100vh - 80px);
+  width: 900px;
+  min-width: 300px;
+  max-width: 98vw;
+  height: auto;
+  min-height: 300px;
+  margin: 48px auto 0 auto;
   display: grid;
   place-items: center;
 }
 
-.cpContainer {
-  width: 500px;
-  height: auto;
-  padding: 20px;
-  background-color: black;
-  border-radius: 12px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-}
-
 .urContainer {
   width: 500px;
   height: auto;
   padding: 20px;
-  background-color: black;
+  background-color: #363740;
   border-radius: 12px;
   color: white;
   display: flex;
   flex-direction: column;
-}
-
-.cpContainer h1 {
   text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.12);
 }
 
-.urContainer {
+.urContainer h1 {
+  font-size: 2rem;
   text-align: center;
-}
-
-.cpContainer label {
-  font-size: 25px;
 }
 
 .urContainer label {
   font-size: 25px;
-}
-
-.cpContainer .inputGp {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
 }
 
 .urContainer .inputGp {
@@ -109,11 +95,11 @@ a:hover {
   flex-direction: column;
 }
 
-.inputGp input,
-.inputGp textarea {
+.urContainer .inputGp input,
+.urContainer .inputGp textarea {
   font-size: 18px;
   border: none;
-  border-radius: 2px;
+  border-radius: 10px;
   padding: 5px;
 }
 
@@ -125,22 +111,106 @@ a:hover {
   height: 150px;
 }
 
-.cpContainer button {
-  margin-top: 20px;
-  height: 40px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
 .urContainer button {
   margin-top: 20px;
-  height: 40px;
+  height: 44px;
+  min-width: 140px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #fca311 0%, #ffb347 100%);
+  color: #22223b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, font-size 0.2s;
+  letter-spacing: 0.5px;
+  outline: none;
+}
+
+.urContainer button:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #ffb347 0%, #fca311 100%);
+  box-shadow: 0 4px 16px rgba(252, 163, 17, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.12);
+  font-size: 19px;
+}
+
+.urContainer .inputGp input:hover,
+.urContainer .inputGp textarea:hover {
+  box-shadow: 0 4px 16px rgba(252, 163, 17, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.cpContainer {
+  width: 500px;
+  height: auto;
+  padding: 20px;
+  background-color: #363740;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+}
+
+.cpContainer h1 {
+  text-align: center;
+}
+
+.cpContainer label {
+  font-size: 25px;
+}
+
+.cpContainer .inputGp {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cpContainer .inputGp input,
+.cpContainer .inputGp textarea {
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 5px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.cpContainer .inputGp input:hover,
+.cpContainer .inputGp textarea:hover {
+  box-shadow: 0 4px 16px rgba(252, 163, 17, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.12);
+  transform: scale(1.03);
+}
+
+.cpContainer button {
+  margin-top: 20px;
+  height: 44px;
+  min-width: 140px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #fca311 0%, #ffb347 100%);
+  color: #22223b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, font-size 0.2s;
+  letter-spacing: 0.5px;
+  outline: none;
+}
+
+.cpContainer button:hover {
+  color: #fff;
+  background: linear-gradient(90deg, #ffb347 0%, #fca311 100%);
+  box-shadow: 0 4px 16px rgba(252, 163, 17, 0.18),
+    0 1.5px 6px rgba(0, 0, 0, 0.12);
+  font-size: 19px;
 }
 
 input,
@@ -228,6 +298,19 @@ textarea {
   transition: min-width 0.2s, max-width 0.2s, flex-basis 0.2s;
 }
 
+.post {
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+}
+
+.post:hover {
+  box-shadow: 0 12px 32px rgba(252, 163, 17, 0.18),
+    0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px) scale(1.04);
+  border: 2px solid #fca311;
+  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  z-index: 2;
+}
+
 .resume-h2 {
   text-align: center;
   margin-top: 20px;
@@ -254,6 +337,12 @@ textarea {
 }
 
 .homePage .post:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px) scale(1.03);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.post:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18), 0 1.5px 6px rgba(0, 0, 0, 0.12);
   transform: translateY(-8px) scale(1.03);
   transition: box-shadow 0.2s, transform 0.2s;

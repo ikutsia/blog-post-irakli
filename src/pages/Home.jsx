@@ -58,131 +58,154 @@ function Home({ isAuth }) {
 
   return (
     <>
-      <div className="pageTitle-Photo">
-        <section
-          className="section"
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <h1
-            className="section-h1"
-            style={{
-              margin: 0,
-              flex: 1,
-              textAlign: "left",
-              fontSize: "1000%",
-              fontFamily: "Quicksand, sans-serif",
-              fontWeight: "bold",
-              paddingLeft: "140px",
-            }}
-          >
+      <div className="w-full bg-gray-300 flex justify-center">
+        <section className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto px-4 py-8">
+          <h1 className="font-bold font-[Quicksand,sans-serif] text-3xl sm:text-5xl md:text-7xl whitespace-nowrap mb-6 md:mb-0">
             Irakli Kutsia
           </h1>
           <img
             src={Irakli}
             alt="Irakli"
-            description="Irakli"
-            style={{
-              margin: "10px 10px 10px 0",
-              maxHeight: "1200px",
-              maxWidth: "1200px",
-              borderRadius: "10px",
-            }}
+            className="rounded-3xl object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72"
           />
         </section>
       </div>
 
-      <div className="homePage">
+      <div className="flex flex-wrap justify-center gap-6 px-2 py-8 w-full max-w-5xl mx-auto">
         {postLists.map((post) => (
-          <div key={post.id}>
-            {/* Render each blog post within a slide */}
-            <div className="post">
-              <div className="postHeader">
-                <div className="title">
-                  <h1>{post.title}</h1>
-                </div>
-                <div className="deletePost">
-                  {isAuth && post.author?.id === auth.currentUser?.uid && (
-                    <button onClick={() => deletePost(post.id)}>
-                      &#x1F5D1;
-                    </button>
-                  )}
-                </div>
+          <div
+            key={post.id}
+            className="bg-white shadow-lg rounded-xl flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md p-5"
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div className="font-bold text-lg md:text-xl text-gray-800 truncate max-w-[70%]">
+                {post.title}
               </div>
-              <div
-                className={`postTextContainer ${
-                  post.showFullPost ? "full-post" : "partial-post"
-                }`}
-              >
-                {post.showFullPost
-                  ? post.text
-                  : `${post.text.slice(0, 200)}...`}
-                {!post.showFullPost && (
-                  <button onClick={() => toggleFullPost(post.id)}>
-                    Read Full Post
+              <div>
+                {isAuth && post.author?.id === auth.currentUser?.uid && (
+                  <button
+                    onClick={() => deletePost(post.id)}
+                    className="text-red-500 text-xl ml-2"
+                  >
+                    &#x1F5D1;
                   </button>
                 )}
               </div>
-              <h3>@{post.author?.email || "Unknown Author"}</h3>
+            </div>
+            <div
+              className={`text-gray-700 text-base md:text-lg mb-2 ${
+                post.showFullPost ? "" : "line-clamp-4"
+              }`}
+            >
+              {post.showFullPost ? post.text : `${post.text.slice(0, 200)}...`}
+              {!post.showFullPost && (
+                <button
+                  onClick={() => toggleFullPost(post.id)}
+                  className="text-blue-500 ml-2"
+                >
+                  Read Full Post
+                </button>
+              )}
+            </div>
+            <div className="text-sm italic text-gray-400 mt-auto">
+              @{post.author?.email || "Unknown Author"}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="resume-box">
-        <section>
-          <h2 className="resume-h2">My Professional Resume</h2>
+      <div className="w-full flex justify-center mt-8">
+        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gray-700 text-white rounded-2xl shadow-lg">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-full m-0 whitespace-nowrap">
+            My Professional Resume
+          </h2>
         </section>
       </div>
 
-      <div className="homePage-2">
-        <div className="resume-section-box">
-          <h2>Motivation</h2>
+      <div className="flex flex-col items-center w-full gap-4 px-2 py-4">
+        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+            Motivation
+          </h2>
           {resumeLists.map((resume) => (
-            <div key={resume.id}>
+            <div
+              key={resume.id}
+              className="text-base sm:text-lg md:text-xl text-center"
+            >
               {resume.motivation}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button onClick={() => deleteResume(resume.id)}>Delete</button>
+                <button
+                  onClick={() => deleteResume(resume.id)}
+                  className="ml-2 text-red-500"
+                >
+                  Delete
+                </button>
               )}
             </div>
           ))}
         </div>
 
-        <div className="resume-section-box">
-          <h2>Education</h2>
+        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+            Education
+          </h2>
           {resumeLists.map((resume) => (
-            <div key={resume.id}>
+            <div
+              key={resume.id}
+              className="text-base sm:text-lg md:text-xl text-center"
+            >
               {resume.education}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button onClick={() => deleteResume(resume.id)}>Delete</button>
+                <button
+                  onClick={() => deleteResume(resume.id)}
+                  className="ml-2 text-red-500"
+                >
+                  Delete
+                </button>
               )}
             </div>
           ))}
         </div>
 
-        <div className="resume-section-box">
-          <h2>Work Experience</h2>
+        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+            Work Experience
+          </h2>
           {resumeLists.map((resume) => (
-            <div key={resume.id}>
+            <div
+              key={resume.id}
+              className="text-base sm:text-lg md:text-xl text-center"
+            >
               {resume.workexperience}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button onClick={() => deleteResume(resume.id)}>Delete</button>
+                <button
+                  onClick={() => deleteResume(resume.id)}
+                  className="ml-2 text-red-500"
+                >
+                  Delete
+                </button>
               )}
             </div>
           ))}
         </div>
 
-        <div className="resume-section-box">
-          <h2>Trainings</h2>
+        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+            Trainings
+          </h2>
           {resumeLists.map((resume) => (
-            <div key={resume.id}>
+            <div
+              key={resume.id}
+              className="text-base sm:text-lg md:text-xl text-center"
+            >
               {resume.trainings}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button onClick={() => deleteResume(resume.id)}>Delete</button>
+                <button
+                  onClick={() => deleteResume(resume.id)}
+                  className="ml-2 text-red-500"
+                >
+                  Delete
+                </button>
               )}
             </div>
           ))}
