@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+/*import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";*/
 import "./styles/App.css";
 import "./styles/Home.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
