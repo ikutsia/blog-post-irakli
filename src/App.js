@@ -14,48 +14,6 @@ import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
 
 function App() {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
-
-  const signUserOut = () => {
-    signOut(auth).then(() => {
-      localStorage.clear();
-      setIsAuth(false);
-      window.location.pathname = "/login";
-    });
-  };
-
-  return (
-    <Router>
-      <nav>
-        <Link to="/"> Home </Link>
-
-        {!isAuth ? (
-          <Link to="/login"> Login </Link>
-        ) : (
-          <>
-            <Link to="/updateresume"> Update Resume </Link>
-
-            <Link to="/createpost"> Create Post </Link>
-            <button className="logout-btn" onClick={signUserOut}>
-              Log out
-            </button>
-            <Link to="/Contact">Contact</Link>
-          </>
-        )}
-      </nav>
-      <Routes>
-        <Route path="/" element={<Home isAuth={isAuth} />} />
-        <Route path="/createpost" element={<CreatePost isAuth={isAuth} />} />
-        <Route
-          path="/updateresume"
-          element={<UpdateResume isAuth={isAuth} />}
-        />
-        <Route path="/Login" element={<Login setIsAuth={setIsAuth} />} />
-        <Route path="/Contact" element={<Contact isAuth={isAuth} />} />
-        <Route path="/Footer" element={<Footer isAuth={isAuth} />} />
-      </Routes>
-    </Router>
-  );
+  return <h1>Hello World</h1>;
 }
-
 export default App;
