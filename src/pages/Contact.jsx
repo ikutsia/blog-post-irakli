@@ -16,6 +16,9 @@ const Contact = () => {
     const templateId = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
     const publicKey = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
+    // Add this line to debug:
+    console.log(serviceId, templateId, publicKey);
+
     // Check if environment variables are set
     if (!serviceId || !templateId || !publicKey) {
       setMessage({
