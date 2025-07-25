@@ -55,13 +55,6 @@ function Home({ isAuth }) {
     getResume();
   }, [resumeCollectionRef]);
 
-  const deleteResume = async (id) => {
-    const resumeDoc = doc(db, "resume", id);
-    await deleteDoc(resumeDoc);
-    const updatedResume = resumeLists.filter((resume) => resume.id !== id);
-    setResumeList(updatedResume);
-  };
-
   // Add new functions to clear individual fields
   const clearResumeField = async (id, field) => {
     const resumeDoc = doc(db, "resume", id);
