@@ -61,6 +61,7 @@ function UpdateResume({ isAuth }) {
         <div className="inputGp">
           <label>Motivation:</label>
           <input
+            className="bg-white text-black"
             placeholder="Motivation..."
             onChange={(event) => {
               setMotivation(event.target.value);
@@ -70,6 +71,7 @@ function UpdateResume({ isAuth }) {
         <div className="inputGp">
           <label>Education:</label>
           <textarea
+            className="bg-white text-black"
             placeholder="Education..."
             onChange={(event) => {
               setEducation(event.target.value);
@@ -79,6 +81,7 @@ function UpdateResume({ isAuth }) {
         <div className="inputGp">
           <label>Work Experience:</label>
           <textarea
+            className="bg-white text-black"
             placeholder="Work experience..."
             onChange={(event) => {
               setWorkExperience(event.target.value);
@@ -88,6 +91,7 @@ function UpdateResume({ isAuth }) {
         <div className="inputGp">
           <label>Trainings:</label>
           <textarea
+            className="bg-white text-black"
             placeholder="Trainings..."
             onChange={(event) => {
               setTrainings(event.target.value);
