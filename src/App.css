@@ -96,22 +96,6 @@ a {
   flex-direction: column;
 }
 
-.inputGp input,
-.inputGp textarea {
-  font-size: 18px;
-  border: none;
-  border-radius: 2px;
-  padding: 5px;
-}
-
-.inputGp input {
-  height: 40px;
-}
-
-.inputGp textarea {
-  height: 150px;
-}
-
 .cpContainer button {
   margin-top: 20px;
   height: 40px;
@@ -341,9 +325,4 @@ textarea {
   justify-content: center;
   margin-top: 3rem;
   margin-bottom: -10rem;
-}
-
-.urContainer .inputGp input,
-.urContainer .inputGp textarea {
-  color: #000;
 }
