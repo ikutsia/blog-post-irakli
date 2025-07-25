@@ -73,72 +73,93 @@ function UpdateResume({ isAuth }) {
   };
 
   return (
-    <div className="updateResumePage">
-      <div className="urContainer">
-        <h1>Update Resume</h1>
+    <div className="w-full min-h-screen bg-gray-100 flex justify-center items-start pt-8 pb-20 px-4">
+      <div className="w-full max-w-2xl bg-black text-white rounded-xl shadow-2xl p-8">
+        <h1 className="text-3xl font-bold text-center mb-8">Update Resume</h1>
+
         {error && (
-          <div
-            className="error-message"
-            style={{ color: "red", marginBottom: "10px" }}
-          >
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6">
             {error}
           </div>
         )}
-        <div className="inputGp">
-          <label htmlFor="motivation">Motivation:</label>
-          <input
-            id="motivation"
-            name="motivation"
-            className="bg-white text-black"
-            placeholder="Motivation..."
-            onChange={(event) => {
-              setMotivation(event.target.value);
-            }}
-          />
+
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <label htmlFor="motivation" className="block text-lg font-semibold">
+              Motivation:
+            </label>
+            <input
+              id="motivation"
+              name="motivation"
+              className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Motivation..."
+              onChange={(event) => {
+                setMotivation(event.target.value);
+              }}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="education" className="block text-lg font-semibold">
+              Education:
+            </label>
+            <textarea
+              id="education"
+              name="education"
+              rows="4"
+              className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+              placeholder="Education..."
+              onChange={(event) => {
+                setEducation(event.target.value);
+              }}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label
+              htmlFor="workexperience"
+              className="block text-lg font-semibold"
+            >
+              Work Experience:
+            </label>
+            <textarea
+              id="workexperience"
+              name="workexperience"
+              rows="4"
+              className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+              placeholder="Work experience..."
+              onChange={(event) => {
+                setWorkExperience(event.target.value);
+              }}
+            />
+          </div>
+
+          <div className="space-y-2">
+            <label htmlFor="trainings" className="block text-lg font-semibold">
+              Trainings:
+            </label>
+            <textarea
+              id="trainings"
+              name="trainings"
+              rows="4"
+              className="w-full px-4 py-3 bg-white text-black rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-vertical"
+              placeholder="Trainings..."
+              onChange={(event) => {
+                setTrainings(event.target.value);
+              }}
+            />
+          </div>
+
+          <button
+            onClick={updateResume}
+            disabled={isSubmitting}
+            className={`w-full py-3 px-6 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-200 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {isSubmitting ? "Updating..." : "Submit Update"}
+          </button>
         </div>
-        <div className="inputGp">
-          <label htmlFor="education">Education:</label>
-          <textarea
-            id="education"
-            name="education"
-            className="bg-white text-black"
-            placeholder="Education..."
-            onChange={(event) => {
-              setEducation(event.target.value);
-            }}
-          />
-        </div>
-        <div className="inputGp">
-          <label htmlFor="workexperience">Work Experience:</label>
-          <textarea
-            id="workexperience"
-            name="workexperience"
-            className="bg-white text-black"
-            placeholder="Work experience..."
-            onChange={(event) => {
-              setWorkExperience(event.target.value);
-            }}
-          />
-        </div>
-        <div className="inputGp">
-          <label htmlFor="trainings">Trainings:</label>
-          <textarea
-            id="trainings"
-            name="trainings"
-            className="bg-white text-black"
-            placeholder="Trainings..."
-            onChange={(event) => {
-              setTrainings(event.target.value);
-            }}
-          />
-        </div>
-        <button
-          onClick={updateResume}
-          disabled={isSubmitting}
-          className={isSubmitting ? "opacity-50 cursor-not-allowed" : ""}
-        >
-          {isSubmitting ? "Updating..." : "Submit Update"}
-        </button>
       </div>
     </div>
   );
