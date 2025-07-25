@@ -22,6 +22,7 @@ function Home({ isAuth }) {
       const postsData = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
+        showFullPost: false, // Initialize showFullPost property
       }));
       setPostList(postsData);
     });
@@ -111,23 +112,35 @@ function Home({ isAuth }) {
                 )}
               </div>
             </div>
-            <div
-              className={`text-gray-700 text-base md:text-lg mb-2 ${
-                post.showFullPost ? "" : "line-clamp-4"
-              }`}
-            >
-              {post.showFullPost ? post.text : `${post.text.slice(0, 200)}...`}
-              {!post.showFullPost && (
-                <button
-                  onClick={() => toggleFullPost(post.id)}
-                  className="text-blue-500 ml-2"
-                >
-                  Read Full Post
-                </button>
+            <div className="text-gray-700 text-base md:text-lg mb-2">
+              {post.showFullPost ? (
+                <>
+                  {post.text}
+                  <button
+                    onClick={() => toggleFullPost(post.id)}
+                    className="text-blue-500 ml-2"
+                  >
+                    Show Less
+                  </button>
+                </>
+              ) : (
+                <>
+                  {post.text.length > 200
+                    ? `${post.text.slice(0, 200)}...`
+                    : post.text}
+                  {post.text.length > 200 && (
+                    <button
+                      onClick={() => toggleFullPost(post.id)}
+                      className="text-blue-500 ml-2"
+                    >
+                      Read Full Post
+                    </button>
+                  )}
+                </>
               )}
             </div>
             <div className="text-sm italic text-gray-400 mt-auto">
-              @{post.author?.email || "Unknown Author"}
+              @{post.author?.name || post.author?.email || "Unknown Author"}
             </div>
           </div>
         ))}
