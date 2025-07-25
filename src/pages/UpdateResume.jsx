@@ -85,8 +85,10 @@ function UpdateResume({ isAuth }) {
           </div>
         )}
         <div className="inputGp">
-          <label>Motivation:</label>
+          <label htmlFor="motivation">Motivation:</label>
           <input
+            id="motivation"
+            name="motivation"
             className="bg-white text-black"
             placeholder="Motivation..."
             onChange={(event) => {
@@ -95,8 +97,10 @@ function UpdateResume({ isAuth }) {
           />
         </div>
         <div className="inputGp">
-          <label>Education:</label>
+          <label htmlFor="education">Education:</label>
           <textarea
+            id="education"
+            name="education"
             className="bg-white text-black"
             placeholder="Education..."
             onChange={(event) => {
@@ -105,8 +109,10 @@ function UpdateResume({ isAuth }) {
           />
         </div>
         <div className="inputGp">
-          <label>Work Experience:</label>
+          <label htmlFor="workexperience">Work Experience:</label>
           <textarea
+            id="workexperience"
+            name="workexperience"
             className="bg-white text-black"
             placeholder="Work experience..."
             onChange={(event) => {
@@ -115,8 +121,10 @@ function UpdateResume({ isAuth }) {
           />
         </div>
         <div className="inputGp">
-          <label>Trainings:</label>
+          <label htmlFor="trainings">Trainings:</label>
           <textarea
+            id="trainings"
+            name="trainings"
             className="bg-white text-black"
             placeholder="Trainings..."
             onChange={(event) => {
