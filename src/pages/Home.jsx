@@ -91,7 +91,15 @@ function Home({ isAuth }) {
         </section>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 px-2 py-8 w-full max-w-5xl mx-auto">
+      <div className="w-full flex justify-center mt-8">
+        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gray-100 text-gray-800 rounded-2xl shadow-lg">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-full m-0 whitespace-nowrap">
+            My Blog
+          </h2>
+        </section>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-6 px-2 py-8 w-full bg-gray-50 p-6">
         {postLists.map((post) => (
           <div
             key={post.id}
