@@ -6,7 +6,7 @@ import "../styles/Footer.css";
 const Footer = () => {
   return (
     <footer>
-      <p>&copy; 2025. Irakli Kutsia Website. All Rights Reserved.</p>
+      <p>Copyright &copy; 2025. Irakli Kutsia Website. All Rights Reserved.</p>
     </footer>
   );
 };
