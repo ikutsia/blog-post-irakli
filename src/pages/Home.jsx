@@ -5,6 +5,7 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  onSnapshot,
 } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 
@@ -18,12 +19,16 @@ function Home({ isAuth }) {
   const postsCollectionRef = collection(db, "posts");
 
   useEffect(() => {
-    const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
-      setPostList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
+    const unsubscribe = onSnapshot(postsCollectionRef, (snapshot) => {
+      const postsData = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setPostList(postsData);
+    });
 
-    getPosts();
+    // Cleanup function to unsubscribe when component unmounts
+    return () => unsubscribe();
   }, [postsCollectionRef]);
 
   const deletePost = async (id) => {
@@ -47,12 +52,16 @@ function Home({ isAuth }) {
   const resumeCollectionRef = collection(db, "resume");
 
   useEffect(() => {
-    const getResume = async () => {
-      const data = await getDocs(resumeCollectionRef);
-      setResumeList(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    };
+    const unsubscribe = onSnapshot(resumeCollectionRef, (snapshot) => {
+      const resumeData = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setResumeList(resumeData);
+    });
 
-    getResume();
+    // Cleanup function to unsubscribe when component unmounts
+    return () => unsubscribe();
   }, [resumeCollectionRef]);
 
   // Add new functions to clear individual fields
