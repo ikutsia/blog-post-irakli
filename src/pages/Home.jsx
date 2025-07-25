@@ -92,7 +92,7 @@ function Home({ isAuth }) {
       </div>
 
       <div className="w-full flex justify-center mt-8">
-        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gray-100 text-gray-800 rounded-2xl shadow-lg">
+        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gradient-to-r from-gray-50 to-gray-200 text-gray-800 rounded-2xl shadow-lg">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-full m-0 whitespace-nowrap">
             My Blog
           </h2>
