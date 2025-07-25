@@ -78,15 +78,15 @@ function Home({ isAuth }) {
 
   return (
     <>
-      <div className="w-full bg-gray-300 flex justify-center">
-        <section className="flex flex-col md:flex-row items-center justify-between w-full max-w-5xl mx-auto px-4 py-8">
-          <h1 className="font-bold font-[Quicksand,sans-serif] text-3xl sm:text-5xl md:text-7xl whitespace-nowrap mb-6 md:mb-0">
+      <div className="w-full bg-gray-300 flex justify-center py-6">
+        <section className="flex flex-col md:flex-row items-center w-full max-w-5xl mx-auto px-4 py-6">
+          <h1 className="font-bold font-[Quicksand,sans-serif] text-4xl sm:text-6xl md:text-8xl lg:text-9xl whitespace-nowrap mb-6 md:mb-0 mr-auto">
             Irakli Kutsia
           </h1>
           <img
             src={Irakli}
             alt="Irakli"
-            className="rounded-3xl object-contain w-32 h-32 sm:w-40 sm:h-40 md:w-56 md:h-56 lg:w-72 lg:h-72"
+            className="rounded-3xl object-contain w-56 h-72 sm:w-64 sm:h-80 md:w-80 md:h-96 lg:w-96 lg:h-[36rem] ml-8"
           />
         </section>
       </div>
