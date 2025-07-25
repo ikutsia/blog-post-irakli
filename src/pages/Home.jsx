@@ -148,12 +148,14 @@ function Home({ isAuth }) {
             // Find the most recent resume with content
             for (let i = resumeLists.length - 1; i >= 0; i--) {
               const resume = resumeLists[i];
+              console.log(`Checking resume ${i}:`, resume);
               if (
                 resume.motivation ||
                 resume.education ||
                 resume.workexperience ||
                 resume.trainings
               ) {
+                console.log(`Found resume with content at index ${i}:`, resume);
                 return resume;
               }
             }
@@ -161,6 +163,7 @@ function Home({ isAuth }) {
           };
 
           const latestResume = getLatestResume();
+          console.log("Latest resume selected:", latestResume);
 
           return (
             <>
@@ -168,9 +171,9 @@ function Home({ isAuth }) {
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
                   Motivation
                 </h2>
-                {latestResume && latestResume.motivation && (
+                {latestResume && (
                   <div className="text-base sm:text-lg md:text-xl text-center">
-                    {latestResume.motivation}
+                    {latestResume.motivation || "No motivation content yet"}
                     {isAuth &&
                       latestResume.author?.id === auth.currentUser?.uid && (
                         <button
@@ -190,9 +193,9 @@ function Home({ isAuth }) {
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
                   Education
                 </h2>
-                {latestResume && latestResume.education && (
+                {latestResume && (
                   <div className="text-base sm:text-lg md:text-xl text-center">
-                    {latestResume.education}
+                    {latestResume.education || "No education content yet"}
                     {isAuth &&
                       latestResume.author?.id === auth.currentUser?.uid && (
                         <button
@@ -212,9 +215,10 @@ function Home({ isAuth }) {
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
                   Work Experience
                 </h2>
-                {latestResume && latestResume.workexperience && (
+                {latestResume && (
                   <div className="text-base sm:text-lg md:text-xl text-center">
-                    {latestResume.workexperience}
+                    {latestResume.workexperience ||
+                      "No work experience content yet"}
                     {isAuth &&
                       latestResume.author?.id === auth.currentUser?.uid && (
                         <button
@@ -234,9 +238,9 @@ function Home({ isAuth }) {
                 <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
                   Trainings
                 </h2>
-                {latestResume && latestResume.trainings && (
+                {latestResume && (
                   <div className="text-base sm:text-lg md:text-xl text-center">
-                    {latestResume.trainings}
+                    {latestResume.trainings || "No trainings content yet"}
                     {isAuth &&
                       latestResume.author?.id === auth.currentUser?.uid && (
                         <button
