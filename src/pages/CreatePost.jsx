@@ -41,8 +41,10 @@ function CreatePost({ isAuth }) {
       <div className="cpContainer">
         <h1>Create A Post</h1>
         <div className="inputGp">
-          <label>Title:</label>
+          <label htmlFor="title">Title:</label>
           <input
+            id="title"
+            name="title"
             placeholder="Title..."
             onChange={(event) => {
               setTitle(event.target.value);
@@ -50,8 +52,10 @@ function CreatePost({ isAuth }) {
           />
         </div>
         <div className="inputGp">
-          <label>Post:</label>
+          <label htmlFor="post">Post:</label>
           <textarea
+            id="post"
+            name="post"
             placeholder="Post..."
             onChange={(event) => {
               setText(event.target.value);
