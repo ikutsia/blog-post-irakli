@@ -342,3 +342,8 @@ textarea {
   margin-top: 3rem;
   margin-bottom: -10rem;
 }
+
+.urContainer .inputGp input,
+.urContainer .inputGp textarea {
+  color: #000;
+}
