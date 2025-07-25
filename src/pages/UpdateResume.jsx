@@ -9,6 +9,8 @@ function UpdateResume({ isAuth }) {
   const [workexperience, setWorkExperience] = useState("");
   const [trainings, setTrainings] = useState("");
   const [resumeAuthor, setResumeAuthor] = useState(""); // Initialize postAuthor state
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const resumeCollectionRef = collection(db, "resume");
   let navigate = useNavigate();
 
@@ -28,6 +30,9 @@ function UpdateResume({ isAuth }) {
     console.log("Trainings:", trainings);
     console.log("Resume Author:", resumeAuthor);
 
+    // Clear previous errors
+    setError("");
+
     if (
       motivation &&
       education &&
@@ -35,19 +40,27 @@ function UpdateResume({ isAuth }) {
       trainings &&
       resumeAuthor
     ) {
-      // Check if all required fields are not empty
-      await addDoc(resumeCollectionRef, {
-        motivation,
-        education,
-        workexperience,
-        trainings,
-        author: {
-          name: resumeAuthor,
-          id: auth.currentUser.uid,
-        },
-      });
-      navigate("/");
+      setIsSubmitting(true);
+      try {
+        // Check if all required fields are not empty
+        await addDoc(resumeCollectionRef, {
+          motivation,
+          education,
+          workexperience,
+          trainings,
+          author: {
+            name: resumeAuthor,
+            id: auth.currentUser.uid,
+          },
+        });
+        navigate("/");
+      } catch (error) {
+        console.error("Error updating resume:", error);
+        setError("Failed to update resume. Please try again.");
+        setIsSubmitting(false);
+      }
     } else {
+      setError("Please fill in all fields before submitting.");
       console.error(
         "Motivation, education, workexperience, trainings or resumeAuthor is empty."
       );
@@ -58,6 +71,11 @@ function UpdateResume({ isAuth }) {
     <div className="updateResumePage">
       <div className="urContainer">
         <h1>Update Resume</h1>
+        {error && (
+          <div className="error-message" style={{ color: "red", marginBottom: "10px" }}>
+            {error}
+          </div>
+        )}
         <div className="inputGp">
           <label>Motivation:</label>
           <input
@@ -98,7 +116,13 @@ function UpdateResume({ isAuth }) {
             }}
           />
         </div>
-        <button onClick={updateResume}>Submit Update</button>
+        <button 
+          onClick={updateResume} 
+          disabled={isSubmitting}
+          className={isSubmitting ? "opacity-50 cursor-not-allowed" : ""}
+        >
+          {isSubmitting ? "Updating..." : "Submit Update"}
+        </button>
       </div>
     </div>
   );
