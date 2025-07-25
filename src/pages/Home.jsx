@@ -78,7 +78,7 @@ function Home({ isAuth }) {
 
   return (
     <>
-      <div className="w-full bg-gray-300 flex justify-center py-6">
+      <div className="w-full bg-gradient-to-r from-gray-200 to-gray-500 flex justify-center py-6">
         <section className="flex flex-col md:flex-row items-center w-full max-w-5xl mx-auto px-4 py-6">
           <h1 className="font-bold font-[Quicksand,sans-serif] text-4xl sm:text-6xl md:text-8xl lg:text-9xl whitespace-nowrap mb-6 md:mb-0 mr-auto">
             Irakli Kutsia
@@ -155,7 +155,7 @@ function Home({ isAuth }) {
       </div>
 
       <div className="w-full flex justify-center mt-8">
-        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gray-700 text-white rounded-2xl shadow-lg">
+        <section className="w-full max-w-2xl mx-auto px-4 py-6 bg-gradient-to-r from-gray-600 to-gray-800 text-white rounded-2xl shadow-lg">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center w-full m-0 whitespace-nowrap">
             My Professional Resume
           </h2>
