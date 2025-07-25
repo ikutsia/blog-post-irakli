@@ -142,109 +142,118 @@ function Home({ isAuth }) {
       </div>
 
       <div className="flex flex-col items-center w-full gap-4 px-2 py-4">
-        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
-            Motivation
-          </h2>
-          {resumeLists.length > 0 && (
-            <div className="text-base sm:text-lg md:text-xl text-center">
-              {resumeLists[resumeLists.length - 1].motivation}
-              {isAuth &&
-                resumeLists[resumeLists.length - 1].author?.id ===
-                  auth.currentUser?.uid && (
-                  <button
-                    onClick={() =>
-                      clearResumeField(
-                        resumeLists[resumeLists.length - 1].id,
-                        "motivation"
-                      )
-                    }
-                    className="ml-2 text-red-500"
-                  >
-                    Delete
-                  </button>
-                )}
-            </div>
-          )}
-        </div>
+        {/* Helper function to get the most recent non-empty resume */}
+        {(() => {
+          const getLatestResume = () => {
+            // Find the most recent resume with content
+            for (let i = resumeLists.length - 1; i >= 0; i--) {
+              const resume = resumeLists[i];
+              if (
+                resume.motivation ||
+                resume.education ||
+                resume.workexperience ||
+                resume.trainings
+              ) {
+                return resume;
+              }
+            }
+            return null;
+          };
 
-        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
-            Education
-          </h2>
-          {resumeLists.length > 0 && (
-            <div className="text-base sm:text-lg md:text-xl text-center">
-              {resumeLists[resumeLists.length - 1].education}
-              {isAuth &&
-                resumeLists[resumeLists.length - 1].author?.id ===
-                  auth.currentUser?.uid && (
-                  <button
-                    onClick={() =>
-                      clearResumeField(
-                        resumeLists[resumeLists.length - 1].id,
-                        "education"
-                      )
-                    }
-                    className="ml-2 text-red-500"
-                  >
-                    Delete
-                  </button>
-                )}
-            </div>
-          )}
-        </div>
+          const latestResume = getLatestResume();
 
-        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
-            Work Experience
-          </h2>
-          {resumeLists.length > 0 && (
-            <div className="text-base sm:text-lg md:text-xl text-center">
-              {resumeLists[resumeLists.length - 1].workexperience}
-              {isAuth &&
-                resumeLists[resumeLists.length - 1].author?.id ===
-                  auth.currentUser?.uid && (
-                  <button
-                    onClick={() =>
-                      clearResumeField(
-                        resumeLists[resumeLists.length - 1].id,
-                        "workexperience"
-                      )
-                    }
-                    className="ml-2 text-red-500"
-                  >
-                    Delete
-                  </button>
+          return (
+            <>
+              <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+                  Motivation
+                </h2>
+                {latestResume && latestResume.motivation && (
+                  <div className="text-base sm:text-lg md:text-xl text-center">
+                    {latestResume.motivation}
+                    {isAuth &&
+                      latestResume.author?.id === auth.currentUser?.uid && (
+                        <button
+                          onClick={() =>
+                            clearResumeField(latestResume.id, "motivation")
+                          }
+                          className="ml-2 text-red-500"
+                        >
+                          Delete
+                        </button>
+                      )}
+                  </div>
                 )}
-            </div>
-          )}
-        </div>
+              </div>
 
-        <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
-            Trainings
-          </h2>
-          {resumeLists.length > 0 && (
-            <div className="text-base sm:text-lg md:text-xl text-center">
-              {resumeLists[resumeLists.length - 1].trainings}
-              {isAuth &&
-                resumeLists[resumeLists.length - 1].author?.id ===
-                  auth.currentUser?.uid && (
-                  <button
-                    onClick={() =>
-                      clearResumeField(
-                        resumeLists[resumeLists.length - 1].id,
-                        "trainings"
-                      )
-                    }
-                    className="ml-2 text-red-500"
-                  >
-                    Delete
-                  </button>
+              <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+                  Education
+                </h2>
+                {latestResume && latestResume.education && (
+                  <div className="text-base sm:text-lg md:text-xl text-center">
+                    {latestResume.education}
+                    {isAuth &&
+                      latestResume.author?.id === auth.currentUser?.uid && (
+                        <button
+                          onClick={() =>
+                            clearResumeField(latestResume.id, "education")
+                          }
+                          className="ml-2 text-red-500"
+                        >
+                          Delete
+                        </button>
+                      )}
+                  </div>
                 )}
-            </div>
-          )}
-        </div>
+              </div>
+
+              <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+                  Work Experience
+                </h2>
+                {latestResume && latestResume.workexperience && (
+                  <div className="text-base sm:text-lg md:text-xl text-center">
+                    {latestResume.workexperience}
+                    {isAuth &&
+                      latestResume.author?.id === auth.currentUser?.uid && (
+                        <button
+                          onClick={() =>
+                            clearResumeField(latestResume.id, "workexperience")
+                          }
+                          className="ml-2 text-red-500"
+                        >
+                          Delete
+                        </button>
+                      )}
+                  </div>
+                )}
+              </div>
+
+              <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
+                  Trainings
+                </h2>
+                {latestResume && latestResume.trainings && (
+                  <div className="text-base sm:text-lg md:text-xl text-center">
+                    {latestResume.trainings}
+                    {isAuth &&
+                      latestResume.author?.id === auth.currentUser?.uid && (
+                        <button
+                          onClick={() =>
+                            clearResumeField(latestResume.id, "trainings")
+                          }
+                          className="ml-2 text-red-500"
+                        >
+                          Delete
+                        </button>
+                      )}
+                  </div>
+                )}
+              </div>
+            </>
+          );
+        })()}
       </div>
 
       <div className="contact">
