@@ -82,9 +82,15 @@ function Home({ isAuth }) {
     <>
       <div className="w-full bg-gradient-to-r from-gray-200 to-gray-500 flex justify-center py-6">
         <section className="flex flex-col md:flex-row items-center w-full max-w-5xl mx-auto px-4 py-6">
-          <h1 className="font-bold font-[Quicksand,sans-serif] text-4xl sm:text-6xl md:text-8xl lg:text-9xl whitespace-nowrap mb-6 md:mb-0 mr-auto">
-            Irakli Kutsia
-          </h1>
+          <div className="mr-auto">
+            <h1 className="font-bold font-[Quicksand,sans-serif] text-4xl sm:text-6xl md:text-8xl lg:text-9xl whitespace-nowrap mb-2">
+              Irakli Kutsia
+            </h1>
+            <h2 className="font-bold text-yellow-400 text-4xl sm:text-5xl md:text-7xl lg:text-8xl whitespace-nowrap text-right">
+              <span className="inline-block mr-2 text-cyan-400">⚛</span>React
+              Hero
+            </h2>
+          </div>
           <img
             src={Irakli}
             alt="Irakli"
