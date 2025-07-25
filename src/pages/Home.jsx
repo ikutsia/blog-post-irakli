@@ -7,6 +7,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db, auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
 
 import Irakli from "../Images/Irakli.png";
 import "../styles/Home.css";
@@ -16,6 +17,7 @@ import Footer from "./Footer";
 function Home({ isAuth }) {
   const [postLists, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onSnapshot(postsCollectionRef, (snapshot) => {
@@ -103,7 +105,8 @@ function Home({ isAuth }) {
         {postLists.map((post) => (
           <div
             key={post.id}
-            className="bg-white shadow-lg rounded-xl flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md p-5"
+            className="bg-white shadow-lg rounded-xl flex flex-col w-full max-w-xs sm:max-w-sm md:max-w-md p-5 cursor-pointer hover:shadow-xl transition-shadow duration-200"
+            onClick={() => navigate(`/post/${post.id}`)}
           >
             <div className="flex items-center justify-between mb-2">
               <div className="font-bold text-lg md:text-xl text-gray-800 truncate max-w-[70%]">
@@ -112,8 +115,11 @@ function Home({ isAuth }) {
               <div>
                 {isAuth && post.author?.id === auth.currentUser?.uid && (
                   <button
-                    onClick={() => deletePost(post.id)}
-                    className="text-red-500 text-xl ml-2"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      deletePost(post.id);
+                    }}
+                    className="text-red-500 text-xl ml-2 hover:text-red-700 transition-colors"
                   >
                     &#x1F5D1;
                   </button>
