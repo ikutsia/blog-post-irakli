@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getDocs, collection, deleteDoc, doc } from "firebase/firestore";
+import {
+  getDocs,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from "firebase/firestore";
 import { db, auth } from "../firebase-config";
 
 import Irakli from "../Images/Irakli.png";
@@ -54,6 +60,17 @@ function Home({ isAuth }) {
     await deleteDoc(resumeDoc);
     const updatedResume = resumeLists.filter((resume) => resume.id !== id);
     setResumeList(updatedResume);
+  };
+
+  // Add new functions to clear individual fields
+  const clearResumeField = async (id, field) => {
+    const resumeDoc = doc(db, "resume", id);
+    await updateDoc(resumeDoc, { [field]: "" });
+    setResumeList((prev) =>
+      prev.map((resume) =>
+        resume.id === id ? { ...resume, [field]: "" } : resume
+      )
+    );
   };
 
   return (
@@ -135,7 +152,7 @@ function Home({ isAuth }) {
               {resume.motivation}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
                 <button
-                  onClick={() => deleteResume(resume.id)}
+                  onClick={() => clearResumeField(resume.id, "motivation")}
                   className="ml-2 text-red-500"
                 >
                   Delete
@@ -157,7 +174,7 @@ function Home({ isAuth }) {
               {resume.education}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
                 <button
-                  onClick={() => deleteResume(resume.id)}
+                  onClick={() => clearResumeField(resume.id, "education")}
                   className="ml-2 text-red-500"
                 >
                   Delete
@@ -179,7 +196,7 @@ function Home({ isAuth }) {
               {resume.workexperience}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
                 <button
-                  onClick={() => deleteResume(resume.id)}
+                  onClick={() => clearResumeField(resume.id, "workexperience")}
                   className="ml-2 text-red-500"
                 >
                   Delete
@@ -201,7 +218,7 @@ function Home({ isAuth }) {
               {resume.trainings}
               {isAuth && resume.author?.id === auth.currentUser?.uid && (
                 <button
-                  onClick={() => deleteResume(resume.id)}
+                  onClick={() => clearResumeField(resume.id, "trainings")}
                   className="ml-2 text-red-500"
                 >
                   Delete
