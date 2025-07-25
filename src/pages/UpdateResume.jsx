@@ -33,26 +33,31 @@ function UpdateResume({ isAuth }) {
     // Clear previous errors
     setError("");
 
+    // Check if at least one field has content and author is set
     if (
-      motivation &&
-      education &&
-      workexperience &&
-      trainings &&
-      resumeAuthor
+      resumeAuthor &&
+      (motivation || education || workexperience || trainings)
     ) {
       setIsSubmitting(true);
       try {
-        // Check if all required fields are not empty
-        await addDoc(resumeCollectionRef, {
-          motivation,
-          education,
-          workexperience,
-          trainings,
+        // Create an object with only non-empty fields
+        const resumeData = {
           author: {
             name: resumeAuthor,
             id: auth.currentUser.uid,
           },
-        });
+        };
+
+        // Only add fields that have content
+        if (motivation) resumeData.motivation = motivation;
+        if (education) resumeData.education = education;
+        if (workexperience) resumeData.workexperience = workexperience;
+        if (trainings) resumeData.trainings = trainings;
+
+        console.log("Submitting resume data:", resumeData);
+
+        await addDoc(resumeCollectionRef, resumeData);
+        console.log("Resume updated successfully!");
         navigate("/");
       } catch (error) {
         console.error("Error updating resume:", error);
@@ -60,10 +65,10 @@ function UpdateResume({ isAuth }) {
         setIsSubmitting(false);
       }
     } else {
-      setError("Please fill in all fields before submitting.");
-      console.error(
-        "Motivation, education, workexperience, trainings or resumeAuthor is empty."
+      setError(
+        "Please fill in at least one field and ensure you are logged in."
       );
+      console.error("No content provided or user not authenticated.");
     }
   };
 
@@ -72,7 +77,10 @@ function UpdateResume({ isAuth }) {
       <div className="urContainer">
         <h1>Update Resume</h1>
         {error && (
-          <div className="error-message" style={{ color: "red", marginBottom: "10px" }}>
+          <div
+            className="error-message"
+            style={{ color: "red", marginBottom: "10px" }}
+          >
             {error}
           </div>
         )}
@@ -116,8 +124,8 @@ function UpdateResume({ isAuth }) {
             }}
           />
         </div>
-        <button 
-          onClick={updateResume} 
+        <button
+          onClick={updateResume}
           disabled={isSubmitting}
           className={isSubmitting ? "opacity-50 cursor-not-allowed" : ""}
         >
