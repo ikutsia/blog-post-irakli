@@ -9,6 +9,7 @@ import CreatePost from "./pages/CreatePost.jsx";
 import UpdateResume from "./pages/UpdateResume.jsx";
 import Login from "./pages/Login.jsx";
 import Contact from "./pages/Contact";
+import BlogPost from "./pages/BlogPost.jsx";
 import Footer from "./pages/Footer";
 import { signOut } from "firebase/auth";
 import { auth } from "./firebase-config";
@@ -52,6 +53,7 @@ function App() {
         />
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
         <Route path="/contact" element={<Contact isAuth={isAuth} />} />
+        <Route path="/post/:postId" element={<BlogPost isAuth={isAuth} />} />
       </Routes>
       <Footer />
     </Router>

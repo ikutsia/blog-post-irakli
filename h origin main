@@ -1,0 +1,26 @@
+[33m7ee58bf[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m changes
+[33mf667ccb[m changes
+[33m4e4fdb8[m Some crucial updates
+[33m76f5ae6[m Some crucial updates
+[33mf5bb163[m Some updates and cleaning the bugs
+[33mea25a72[m Updates and cleaning the bugs
+[33m2f60aa2[m Fix: Set input and textarea text color to black in UpdateResume for better visibility
+[33mb5f3b9f[m Remove unused deleteResume function to prevent ESLint from giving error
+[33m94d8f29[m Refactor resume section delete button to only clear relevant section text instead of deleting entire resume
+[33m016c841[m Update Contact and Login pages
+[33m6879799[m Fix CSP: allow apis.google.com in frame-src for Google sign-in
+[33m0af7b7e[m Allow appis.google.com in csp for Google Auth
+[33m7a965b4[m Fix package.json: remove slick and carousel for test
+[33m148fdd1[m Update App.js and package.json for test
+[33m94f7569[m Update app to previous version
+[33m4dd221e[m Restore original App.js
+[33m8e9d2f2[m Remove secrets from repo files
+[33m143e69f[m Test changes to App.js
+[33mf7073f0[m Test minimal App.js to debug Netlify white screen
+[33mebbc965[m Add Netlify SPA redirect for React Router
+[33md558da8[m Remove Homepage field from package.json for netlify deployment
+[33mf0f7a34[m Fix CSP eval issue: Add _headers file and update dependencies
+[33md8eb19f[m Update the entire project with latest changes
+[33m4f4f16c[m Recent changes 19.07.2025
+[33mf699660[m Update build comman in netlify.toml for Netlify deployment
+[33m3ea331a[m Version with latest changes 19.07.25

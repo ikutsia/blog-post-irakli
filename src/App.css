@@ -41,9 +41,12 @@ a {
 
 .updateResumePage {
   width: 100%;
-  height: calc (100vh - 80px);
-  display: grid;
-  place-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 20px 0 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
 }
 
 .cpContainer {
@@ -61,6 +64,7 @@ a {
   width: 500px;
   height: auto;
   padding: 20px;
+  margin-bottom: 20px;
   background-color: black;
   border-radius: 12px;
   color: white;
@@ -72,7 +76,7 @@ a {
   text-align: center;
 }
 
-.urContainer {
+.urContainer h1 {
   text-align: center;
 }
 

@@ -65,8 +65,14 @@ const Contact = () => {
           I'd love to hear from you!
         </p>
         <div>
-          <label className="block text-gray-700 font-semibold mb-1">Name</label>
+          <label
+            htmlFor="name"
+            className="block text-gray-700 font-semibold mb-1"
+          >
+            Name
+          </label>
           <input
+            id="name"
             type="text"
             name="from_name"
             required
@@ -75,10 +81,14 @@ const Contact = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-semibold mb-1">
+          <label
+            htmlFor="email"
+            className="block text-gray-700 font-semibold mb-1"
+          >
             Email
           </label>
           <input
+            id="email"
             type="email"
             name="user_email"
             required
@@ -87,10 +97,14 @@ const Contact = () => {
           />
         </div>
         <div>
-          <label className="block text-gray-700 font-semibold mb-1">
+          <label
+            htmlFor="message"
+            className="block text-gray-700 font-semibold mb-1"
+          >
             Message
           </label>
           <textarea
+            id="message"
             name="message"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition min-h-[100px]"
