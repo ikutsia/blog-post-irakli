@@ -137,88 +137,104 @@ function Home({ isAuth }) {
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
             Motivation
           </h2>
-          {resumeLists.map((resume) => (
-            <div
-              key={resume.id}
-              className="text-base sm:text-lg md:text-xl text-center"
-            >
-              {resume.motivation}
-              {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button
-                  onClick={() => clearResumeField(resume.id, "motivation")}
-                  className="ml-2 text-red-500"
-                >
-                  Delete
-                </button>
-              )}
+          {resumeLists.length > 0 && (
+            <div className="text-base sm:text-lg md:text-xl text-center">
+              {resumeLists[resumeLists.length - 1].motivation}
+              {isAuth &&
+                resumeLists[resumeLists.length - 1].author?.id ===
+                  auth.currentUser?.uid && (
+                  <button
+                    onClick={() =>
+                      clearResumeField(
+                        resumeLists[resumeLists.length - 1].id,
+                        "motivation"
+                      )
+                    }
+                    className="ml-2 text-red-500"
+                  >
+                    Delete
+                  </button>
+                )}
             </div>
-          ))}
+          )}
         </div>
 
         <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
             Education
           </h2>
-          {resumeLists.map((resume) => (
-            <div
-              key={resume.id}
-              className="text-base sm:text-lg md:text-xl text-center"
-            >
-              {resume.education}
-              {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button
-                  onClick={() => clearResumeField(resume.id, "education")}
-                  className="ml-2 text-red-500"
-                >
-                  Delete
-                </button>
-              )}
+          {resumeLists.length > 0 && (
+            <div className="text-base sm:text-lg md:text-xl text-center">
+              {resumeLists[resumeLists.length - 1].education}
+              {isAuth &&
+                resumeLists[resumeLists.length - 1].author?.id ===
+                  auth.currentUser?.uid && (
+                  <button
+                    onClick={() =>
+                      clearResumeField(
+                        resumeLists[resumeLists.length - 1].id,
+                        "education"
+                      )
+                    }
+                    className="ml-2 text-red-500"
+                  >
+                    Delete
+                  </button>
+                )}
             </div>
-          ))}
+          )}
         </div>
 
         <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
             Work Experience
           </h2>
-          {resumeLists.map((resume) => (
-            <div
-              key={resume.id}
-              className="text-base sm:text-lg md:text-xl text-center"
-            >
-              {resume.workexperience}
-              {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button
-                  onClick={() => clearResumeField(resume.id, "workexperience")}
-                  className="ml-2 text-red-500"
-                >
-                  Delete
-                </button>
-              )}
+          {resumeLists.length > 0 && (
+            <div className="text-base sm:text-lg md:text-xl text-center">
+              {resumeLists[resumeLists.length - 1].workexperience}
+              {isAuth &&
+                resumeLists[resumeLists.length - 1].author?.id ===
+                  auth.currentUser?.uid && (
+                  <button
+                    onClick={() =>
+                      clearResumeField(
+                        resumeLists[resumeLists.length - 1].id,
+                        "workexperience"
+                      )
+                    }
+                    className="ml-2 text-red-500"
+                  >
+                    Delete
+                  </button>
+                )}
             </div>
-          ))}
+          )}
         </div>
 
         <div className="w-full max-w-2xl bg-white text-gray-800 rounded-xl shadow-md p-4 sm:p-6 mb-2">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-center mb-2 text-gray-700">
             Trainings
           </h2>
-          {resumeLists.map((resume) => (
-            <div
-              key={resume.id}
-              className="text-base sm:text-lg md:text-xl text-center"
-            >
-              {resume.trainings}
-              {isAuth && resume.author?.id === auth.currentUser?.uid && (
-                <button
-                  onClick={() => clearResumeField(resume.id, "trainings")}
-                  className="ml-2 text-red-500"
-                >
-                  Delete
-                </button>
-              )}
+          {resumeLists.length > 0 && (
+            <div className="text-base sm:text-lg md:text-xl text-center">
+              {resumeLists[resumeLists.length - 1].trainings}
+              {isAuth &&
+                resumeLists[resumeLists.length - 1].author?.id ===
+                  auth.currentUser?.uid && (
+                  <button
+                    onClick={() =>
+                      clearResumeField(
+                        resumeLists[resumeLists.length - 1].id,
+                        "trainings"
+                      )
+                    }
+                    className="ml-2 text-red-500"
+                  >
+                    Delete
+                  </button>
+                )}
             </div>
-          ))}
+          )}
         </div>
       </div>
 
