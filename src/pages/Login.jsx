@@ -10,9 +10,9 @@ import { useEffect } from "react";
 
 function Login({ setIsAuth }) {
   let navigate = useNavigate();
+  const [error, setError] = React.useState("");
 
   useEffect(() => {
-    // Check for redirect result when component mounts
     const auth = getAuth();
     getRedirectResult(auth)
       .then((result) => {
@@ -23,6 +23,7 @@ function Login({ setIsAuth }) {
         }
       })
       .catch((error) => {
+        setError("Redirect error. See console for details.");
         console.error("Redirect error:", error);
       });
   }, [setIsAuth, navigate]);
@@ -43,11 +44,12 @@ function Login({ setIsAuth }) {
       setIsAuth(true);
       navigate("/");
     } catch (error) {
-      console.log("Popup failed, trying redirect:", error);
+      setError("Popup failed, trying redirect...");
       // If popup fails, fall back to redirect
       try {
         await signInWithRedirect(auth, provider);
       } catch (redirectError) {
+        setError("Both popup and redirect failed. See console for details.");
         console.error("Both popup and redirect failed:", redirectError);
       }
     }
@@ -56,6 +58,7 @@ function Login({ setIsAuth }) {
   return (
     <div className="loginPage">
       <p>Sign In with Google to continue</p>
+      {error && <div style={{ color: "red" }}>{error}</div>}
       <button className="login-with-google-btn" onClick={signInWithGoogle}>
         Sign in with Google
       </button>
