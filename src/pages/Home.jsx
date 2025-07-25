@@ -56,6 +56,7 @@ function Home({ isAuth }) {
         ...doc.data(),
         id: doc.id,
       }));
+      console.log("Resume data received:", resumeData);
       setResumeList(resumeData);
     });
 
