@@ -11,9 +11,31 @@ function CreatePost({ isAuth }) {
   let navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is authenticated and has displayName property
-    if (isAuth && auth.currentUser && auth.currentUser.displayName) {
-      setPostAuthor(auth.currentUser.displayName); // Set postAuthor state
+    // Check if user is authenticated and extract full name
+    if (isAuth && auth.currentUser) {
+      let fullName = "";
+
+      // Try to get display name first
+      if (auth.currentUser.displayName) {
+        fullName = auth.currentUser.displayName;
+      }
+      // If no display name, try to construct from email
+      else if (auth.currentUser.email) {
+        const emailName = auth.currentUser.email.split("@")[0];
+        // Convert email username to proper name format
+        fullName = emailName
+          .split(/[._-]/)
+          .map(
+            (word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+          )
+          .join(" ");
+      }
+
+      if (fullName) {
+        setPostAuthor(fullName);
+      } else {
+        navigate("/login");
+      }
     } else {
       navigate("/login");
     }
@@ -46,6 +68,7 @@ function CreatePost({ isAuth }) {
             id="title"
             name="title"
             placeholder="Title..."
+            className="text-black bg-white"
             onChange={(event) => {
               setTitle(event.target.value);
             }}
@@ -57,6 +80,7 @@ function CreatePost({ isAuth }) {
             id="post"
             name="post"
             placeholder="Post..."
+            className="text-black bg-white"
             onChange={(event) => {
               setText(event.target.value);
             }}
