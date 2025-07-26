@@ -298,8 +298,6 @@ function Home({ isAuth }) {
       <div id="contact" className="contact">
         <Contact />
       </div>
-
-      <Footer />
     </>
   );
 }
