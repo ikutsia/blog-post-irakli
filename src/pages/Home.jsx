@@ -87,8 +87,10 @@ function Home({ isAuth }) {
               Irakli Kutsia
             </h1>
             <h2 className="font-bold text-yellow-400 text-4xl sm:text-5xl md:text-7xl lg:text-8xl whitespace-nowrap text-right">
-              <span className="inline-block mr-2 text-cyan-400">⚛</span>React
-              Hero
+              <span className="inline-block mr-2 text-cyan-400 animate-spin-slow">
+                ⚛
+              </span>
+              React Hero
             </h2>
           </div>
           <img
