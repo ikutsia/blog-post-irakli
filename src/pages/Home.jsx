@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import Irakli from "../Images/Irakli.png";
 import "../styles/Home.css";
 import Contact from "./Contact";
-import Footer from "./Footer";
 
 function Home({ isAuth }) {
   const [postLists, setPostList] = useState([]);
