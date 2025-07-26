@@ -30,9 +30,7 @@ function App() {
       <nav>
         <Link to="/"> Home </Link>
 
-        {!isAuth ? (
-          <Link to="/login"> Login </Link>
-        ) : (
+        {isAuth && (
           <>
             <Link to="/updateresume"> Update Resume </Link>
 
