@@ -27,18 +27,59 @@ function App() {
 
   return (
     <Router>
-      <nav>
-        <Link to="/"> Home </Link>
+      <nav className="m-0 w-full h-20 bg-black flex justify-center items-center text-white">
+        <Link
+          to="/"
+          className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+        >
+          {" "}
+          Home{" "}
+        </Link>
+        <a
+          href="/#blog"
+          className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none cursor-pointer hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+        >
+          {" "}
+          Blog{" "}
+        </a>
+        <a
+          href="/#resume"
+          className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none cursor-pointer hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+        >
+          {" "}
+          Resume{" "}
+        </a>
+        <a
+          href="/#contact"
+          className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none cursor-pointer hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+        >
+          {" "}
+          Contact{" "}
+        </a>
 
         {isAuth && (
           <>
-            <Link to="/updateresume"> Update Resume </Link>
+            <Link
+              to="/updateresume"
+              className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+            >
+              {" "}
+              Update Resume{" "}
+            </Link>
 
-            <Link to="/createpost"> Create Post </Link>
-            <button className="logout-btn" onClick={signUserOut}>
+            <Link
+              to="/createpost"
+              className="text-white no-underline mx-2.5 text-2xl border-none bg-transparent shadow-none hover:text-orange-400 hover:no-underline hover:text-3xl transition-all duration-200"
+            >
+              {" "}
+              Create Post{" "}
+            </Link>
+            <button
+              className="text-2xl py-2 px-4.5 bg-transparent border-none text-white cursor-pointer mx-2.5 transition-all duration-200 hover:text-orange-400 hover:text-3xl"
+              onClick={signUserOut}
+            >
               Log out
             </button>
-            <Link to="/contact">Contact</Link>
           </>
         )}
       </nav>
