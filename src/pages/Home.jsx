@@ -79,8 +79,8 @@ function Home({ isAuth }) {
 
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-gray-200 to-gray-500 flex justify-center py-6">
-        <section className="flex flex-col md:flex-row items-center w-full max-w-5xl mx-auto px-4 py-6">
+      <div className="w-full flowing-gradient-mesh flex justify-center py-6">
+        <section className="flex flex-col md:flex-row items-center w-full max-w-5xl mx-auto px-4 py-6 hero-content">
           <div className="mr-auto">
             <h1 className="font-bold font-[Quicksand,sans-serif] text-4xl sm:text-6xl md:text-8xl lg:text-9xl whitespace-nowrap mb-2">
               Irakli Kutsia
